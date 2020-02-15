@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>文件上传示例</title>
+</head>
+<body>
+<h2>文件上传示例</h2>
+<hr/>
+<form action="http://localhost:405/excel/import/" method="POST" enctype="multipart/form-data">
+    <input type="file" id="file1" name="fileContent">
+</form>
+<button id='btn'> 提交</button>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    $("#btn").click(function() {
+        var formData = new FormData();
+        formData.append("excelFile", $("#file1")[0].files[0]);
+        $.ajax({
+            url: "http://localhost:405/excel/import",
+            data: formData,
+            type: "POST",
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                console.log(data)
+            },
+            error: function() {
+                alert("失败")
+            }
+        });
+    })
+</script>
+</body>
+</html>
