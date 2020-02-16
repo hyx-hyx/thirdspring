@@ -8,7 +8,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.InputStream;
-import java.sql.Statement;
 
 public class AnalystExcel {
     private final static String excel2003L = ".xls";
@@ -17,6 +16,7 @@ public class AnalystExcel {
     private String fileName;
     public  String mark;
     public String name;
+    public int id;
     AnalystExcel(InputStream in, String fileName) {
         this.in=in;
         this.fileName=fileName;
@@ -39,9 +39,9 @@ public class AnalystExcel {
             if (null == sheet) {
                 continue;
             }
-            for (int j = sheet.getFirstRowNum(); j <= sheet.getLastRowNum(); ++j) {
+            for (int j = sheet.getFirstRowNum()+1; j <= sheet.getLastRowNum(); ++j) {
                 row = sheet.getRow(j);
-                if (row == null || row.getFirstCellNum() == j) {
+                if (row == null) {
                     continue;
                 }
                 //遍历所有的列

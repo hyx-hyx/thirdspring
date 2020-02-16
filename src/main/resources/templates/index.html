@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>抽奖结果</title>
+</head>
+<h2>抽奖结果</h2>
+<body>
+学号：<input type="text" th:value="${mark}"><br/>
+姓名：<input type="text" th:value="${name}"><br/>
+<form action="http://localhost:405/index" method="POST" enctype="text/plain">
+    <input type="submit" value="再抽一次">
+</form>
+</body>
+</html>
